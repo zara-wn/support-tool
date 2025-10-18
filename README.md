@@ -1,38 +1,46 @@
-# Support Troubleshooting Toolkit
+# 🧰 Support Troubleshooting Toolkit
 
 A lightweight Python tool to perform quick web and network diagnostics — designed for support engineers or anyone needing to check if a site is reachable and view its DNS and HTTP details.
 
 ---
 
-## 🧩 Features
+## 🌟 Features
 
 - ✅ HTTP status code & redirect tracking  
 - 🌐 DNS lookup (IP resolution)  
 - 🧠 Simple, interactive CLI  
-- ⚙️ Lightweight — built with only the `requests` and `socket` libraries  
+- ⚙️ Lightweight — built only with `requests` and `socket`  
+- 🧾 Includes real-world support case simulations (`tickets/`)
 
 ---
 
 ## ⚙️ How to Build This Project from Scratch
 
-### 1. Create Your Project Folder
-```bash
+### 1️⃣ Create Your Project Folder
+\`\`\`bash
 mkdir support-tool
 cd support-tool
+\`\`\`
 
-2. Set Up a Virtual Environment
+### 2️⃣ Set Up a Virtual Environment
+\`\`\`bash
 python3 -m venv venv
 source venv/bin/activate
+\`\`\`
 
-3. Install Dependencies
+### 3️⃣ Install Dependencies
+\`\`\`bash
 pip install requests
+\`\`\`
 
-4. Create the Main Python File
+### 4️⃣ Create the Main Python File
+\`\`\`bash
 nano support_tool.py
+\`\`\`
 
+Paste this code inside it:
 
-Then paste this code inside it:
-
+\`\`\`python
 import requests
 import socket
 import time
@@ -49,10 +57,11 @@ def http_check(url):
         print("Response headers:")
         for k, v in r.headers.items():
             print(f"  {k}: {v}")
-        cache_hdrs = {h: r.headers[h] for h in r.headers if 'cache' in h.lower() or h.lower() in ('age','etag','expires')}
+
+        cache_hdrs = {h: r.headers[h] for h in r.headers if 'cache' in h.lower() or h.lower() in ('age', 'etag', 'expires')}
         if cache_hdrs:
             print("\nCache-related headers (quick view):")
-            for k,v in cache_hdrs.items():
+            for k, v in cache_hdrs.items():
                 print(f"  {k}: {v}")
     except requests.exceptions.RequestException as e:
         print("Error fetching URL:", e)
@@ -63,7 +72,7 @@ def dns_lookup(url):
         ip_address = socket.gethostbyname(hostname)
         print(f"\n== DNS Lookup: {hostname} ==")
         print(f"Hostname: {hostname}")
-        print(f"IP Addresses: {ip_address}")
+        print(f"IP Address: {ip_address}")
     except Exception as e:
         print(f"\nDNS Lookup failed: {e}")
 
@@ -78,124 +87,93 @@ def main():
 
 if __name__ == "__main__":
     main()
+\`\`\`
 
+Save with **Ctrl + O**, **Enter**, then **Ctrl + X**.
 
-Save with Ctrl + O, press Enter, then Ctrl + X.
+---
 
-▶️ How to Run the Tool
+## ▶️ How to Run the Tool
 
-Run your project inside the virtual environment:
+Run inside the virtual environment:
 
+\`\`\`bash
 python3 support_tool.py
+\`\`\`
 
-
-Enter any URL (for example):
-
+Example input:
 https://google.com
 
 
-You’ll see both an HTTP response and DNS lookup results.
+Example output:
 
-🧪 Example Output
-== HTTP check: https://google.com ==
+
+== HTTP check: https://google.com
+ ==
 Status code: 200
 Final URL: https://www.google.com/
+
 Elapsed time: 0.29s
 
 == DNS Lookup: google.com ==
 Hostname: google.com
-IP Addresses: 172.217.12.142
-
-🧰 Common Fixes
-
-If you get an error like command not found:
-
-Make sure you’re in the same folder as support_tool.py
-
-Run the tool with python3 support_tool.py
-
-Ensure requests is installed with pip install requests
-
-🚀 Next Steps / Enhancements
-
-Add ping or traceroute features
-
-Export logs to JSON or text file
-
-Add CLI arguments (argparse) for automation
-
-🪪 License
-
-MIT License
+IP Address: 172.217.12.142
 
 
 ---
 
-### ✅ STEP 3: Save & Exit Nano
-- Press **Ctrl + O**, then **Enter** to save  
-- Press **Ctrl + X** to exit  
+## 🧾 Example Support Tickets
+
+This folder simulates real troubleshooting tickets from a Customer Support Engineer’s workflow.
+
+| Ticket | Summary | Example Issue |
+|:-------|:---------|:--------------|
+| `001-503-eu-edge.md` | Intermittent 503 errors for EU users | Regional connectivity issue |
+| `002-tls-expired.md` | TLS handshake failure | Expired SSL certificate on app endpoint |
+
+Each markdown file includes:
+- Steps to reproduce  
+- Findings  
+- Actions taken  
+- Resolution summary  
+- Attachments or CLI command outputs  
+
+Run this to list all tickets:
+\`\`\`bash
+ls tickets/
+\`\`\`
 
 ---
 
-### ✅ STEP 4: Confirm the README Exists
-Type:
-```bash
-ls
+## 🧰 Common Fixes
+
+If you get:
 
 
-You should now see:
-
-support_tool.py  support_tool.py.bak  support-tool.py  venv  README.md
-
-✅ STEP 5: Create a .gitignore File (to exclude venv)
-
-Run:
-
-nano .gitignore
+command not found
 
 
-Paste this:
+✅ Make sure you’re in the same folder as `support_tool.py`  
+✅ Run it with `python3 support_tool.py`  
+✅ Install dependencies again with `pip install requests`
 
-venv/
-__pycache__/
-*.pyc
+---
 
+## 🚀 Future Enhancements
 
-Save with Ctrl + O, Enter, then Ctrl + X.
+- Add `ping` or `traceroute` features  
+- Export logs to `.json` or `.txt`  
+- Add CLI arguments with `argparse`  
+- Integrate AWS or API health checks  
 
+---
 
+## 🪪 License
 
+MIT License — see [LICENSE](LICENSE) for details.
 
+---
 
-✅ STEP 6: Initialize Git & Push to GitHub
-
-Initialize a git repo:
-
-git init
-
-
-Add all files:
-
-git add .
-
-
-Commit your work:
-
-git commit -m "Initial commit - Support Troubleshooting Toolkit"
-
-
-Go to GitHub
- → create a new repository named:
-
-support-tool
-
-
-Then, back in your terminal, connect it:
-
-git remote add origin https://github.com/YOUR_USERNAME/support-tool.git
-
-
-Push it:
-
-git branch -M main
-git push -u origin main
+### 🧑‍💻 Author
+**Zara (zara-wn)**  
+A cloud-focused engineer in training, building hands-on diagnostic tools and real-world support case simulations.
