@@ -1,0 +1,34 @@
+{
+    "url": "https://google.com",
+    "http": {
+        "status_code": 200,
+        "final_url": "https://www.google.com/",
+        "elapsed_time": 0.4834611415863037,
+        "headers": {
+            "Date": "Sun, 19 Oct 2025 05:37:27 GMT",
+            "Expires": "-1",
+            "Cache-Control": "private, max-age=0",
+            "Content-Type": "text/html; charset=ISO-8859-1",
+            "Content-Security-Policy-Report-Only": "object-src 'none';base-uri 'self';script-src 'nonce-LTbPhdGEA8-P1HcgeWaOog' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp",
+            "Accept-CH": "Sec-CH-Prefers-Color-Scheme",
+            "P3P": "CP=\"This is not a P3P policy! See g.co/p3phelp for more info.\"",
+            "Content-Encoding": "gzip",
+            "Server": "gws",
+            "X-XSS-Protection": "0",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Set-Cookie": "AEC=AaJma5tjY01IwJCf6lEIVbdRDTtvthUjahwBoalZGV-R9c4GyJPsa6Adh9c; expires=Fri, 17-Apr-2026 05:37:27 GMT; path=/; domain=.google.com; Secure; HttpOnly; SameSite=lax, NID=525=JxVW51us5qBFLgFviBbVYS9Kx6nSerNYnyVxl19nFQDtsRnQ-Xy5rikRdYP6I0ANI0V7kdTOHHshNWZ72fOJIT2fb9r7l-IwygDJHYFJFyK5THmStwwTIRJuSmHhilZlBZEuUgaDXI5aOSaMguE7SbP_fpqcvRXHuQXWwL2SvM4uQu1ANpy3iX-nuDvs-3TiJewuwxkBSYv1HaOa3k9fuBgQ; expires=Mon, 20-Apr-2026 05:37:27 GMT; path=/; domain=.google.com; HttpOnly",
+            "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+            "Transfer-Encoding": "chunked"
+        }
+    },
+    "dns": {
+        "hostname": "google.com",
+        "ip": "142.250.72.142"
+    },
+    "ping": [
+        "PING google.com (142.250.72.142): 56 data bytes\n64 bytes from 142.250.72.142: icmp_seq=0 ttl=117 time=434.753 ms\n64 bytes from 142.250.72.142: icmp_seq=1 ttl=117 time=24.705 ms\n64 bytes from 142.250.72.142: icmp_seq=2 ttl=117 time=26.427 ms\n64 bytes from 142.250.72.142: icmp_seq=3 ttl=117 time=15.770 ms\n\n--- google.com ping statistics ---\n4 packets transmitted, 4 packets received, 0.0% packet loss\nround-trip min/avg/max/stddev = 15.770/125.414/434.753/178.643 ms\n"
+    ],
+    "traceroute": [
+        " 1  osync (192.168.1.1)  5.773 ms  3.771 ms  3.128 ms\n 2  int-1.sntlcasm04m.netops.charter.com (142.254.187.49)  66.630 ms  253.110 ms  11.591 ms\n 3  lag-57.sntlcaga02h.netops.charter.com (76.167.29.2)  33.490 ms  61.312 ms  173.452 ms\n 4  lag-47.mcr11vnnzca24.netops.charter.com (72.129.25.248)  111.833 ms  12.167 ms  101.956 ms\n 5  lag-29.rcr01tustcaft.netops.charter.com (72.129.13.2)  34.742 ms  94.053 ms  487.074 ms\n 6  74.125.118.176 (74.125.118.176)  16.652 ms\n    72.14.221.250 (72.14.221.250)  63.768 ms\n    74.125.118.176 (74.125.118.176)  201.208 ms\n 7  * * *\n 8  142.251.60.111 (142.251.60.111)  17.736 ms\n    142.251.60.109 (142.251.60.109)  69.136 ms\n    108.170.230.136 (108.170.230.136)  33.425 ms\n 9  142.251.60.109 (142.251.60.109)  427.535 ms\n    lax17s49-in-f14.1e100.net (142.250.72.142)  18.315 ms  17.247 ms\n"
+    ]
+}

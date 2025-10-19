@@ -189,18 +189,38 @@ HTTP Check DNS Lookup Ping
 ---
 📁 Project Structure
 
-support-tool/
-│
-├─ README.md        <- Instructions, examples, tickets info
-├─ LICENSE          <- MIT License
-├─ requirements.txt <- Python dependencies
-├─ support_tool.py  <- Main tool: HTTP, DNS, Ping, Traceroute
-├─ tickets/         <- Sample troubleshooting cases
-│   ├─ 001-503-eu-edge.md
-│   └─ 002-tls-expired.md
-├─ logs/            <- Stores output/logs if implemented later
-└─ venv/            <- Python virtual environment
+📦 support-tool/
+├─ README.md          # Project overview & instructions
+├─ LICENSE            # MIT License
+├─ support_tool.py    # Main Python script (HTTP, DNS, Ping, Traceroute)
+├─ requirements.txt   # Python dependencies
+├─ logs/              # Folder for TXT & JSON log files
+└─ tickets/           # Example incident tickets (markdown)
+    ├─ 001-503-eu-edge.md
+    └─ 002-tls-expired.md
 
+Workflow:
+[User runs tool]
+        │
+        ▼
+[HTTP check] → logs response + headers
+        │
+        ▼
+[DNS lookup] → logs hostname + IP
+        │
+        ▼
+[Ping check] → logs latency & packet loss
+        │
+        ▼
+[Traceroute] → logs network path
+        │
+        ▼
+[Save logs] → logs/log_TIMESTAMP.txt & .json
+        │
+        ▼
+[End] - Data stored for review or reporting
+
+---
 
 ## 🪪 License
 

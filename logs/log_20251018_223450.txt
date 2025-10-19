@@ -1,0 +1,36 @@
+Support Troubleshooting Toolkit - HTTP, DNS, Ping & Traceroute Checker
+
+== HTTP check: https://google.com ==
+Status code: 200
+Final URL: https://www.google.com/
+Elapsed time: 0.29s
+
+Response headers:
+  Date: Sun, 19 Oct 2025 05:34:50 GMT
+  Expires: -1
+  Cache-Control: private, max-age=0
+  Content-Type: text/html; charset=ISO-8859-1
+  Content-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce-A_HEaqxP6EemAbyGkvAzAA' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+  Accept-CH: Sec-CH-Prefers-Color-Scheme
+  P3P: CP="This is not a P3P policy! See g.co/p3phelp for more info."
+  Content-Encoding: gzip
+  Server: gws
+  X-XSS-Protection: 0
+  X-Frame-Options: SAMEORIGIN
+  Set-Cookie: AEC=AaJma5u9QOYaj7NrzY6N2nIGWPeWibDYStJJc3TmzoT8tamrqhiPvsxtKw; expires=Fri, 17-Apr-2026 05:34:50 GMT; path=/; domain=.google.com; Secure; HttpOnly; SameSite=lax, NID=525=U9uv1tA2qHaPd5Q8AfuYyNyUZoMlPAV3PYWIJrMeao154Qkg6jcEe7OfIg4kguAxjvLuhg0iS74CdVgR1HKi_f9I3y8YKDcaaVHkvdu8cLkBBHi58GUInmxjHDt1Wc0j2EiY18rXsRMVv38v7-ymsigt1Ss3pW1JgsV-vxi8rcwabYh3yfgLNQ4-qY_ethdDF0dwBUzR1PSoZOMsR2TqCmy2; expires=Mon, 20-Apr-2026 05:34:50 GMT; path=/; domain=.google.com; HttpOnly
+  Alt-Svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+  Transfer-Encoding: chunked
+
+Cache-related headers (quick view):
+  Expires: -1
+  Cache-Control: private, max-age=0
+
+== DNS Lookup: google.com ==
+Hostname: google.com
+IP Address: 142.250.72.142
+
+== Ping: google.com ==
+
+== Traceroute: google.com ==
+
+Log saved to logs/log_20251018_223450.txt
