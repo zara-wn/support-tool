@@ -168,6 +168,40 @@ command not found
 
 ---
 
+## 🛠️ Support Toolkit Workflow
+
+```text
+User runs support_tool.py
+          │
+          ▼
+     Input URL
+          │
+  ┌───────┼────────┐
+  │       │        │
+HTTP Check DNS Lookup Ping
+          │
+       Traceroute
+          │
+          ▼
+   Outputs to terminal
+(Optional: save to logs/)
+
+---
+📁 Project Structure
+
+support-tool/
+│
+├─ README.md        <- Instructions, examples, tickets info
+├─ LICENSE          <- MIT License
+├─ requirements.txt <- Python dependencies
+├─ support_tool.py  <- Main tool: HTTP, DNS, Ping, Traceroute
+├─ tickets/         <- Sample troubleshooting cases
+│   ├─ 001-503-eu-edge.md
+│   └─ 002-tls-expired.md
+├─ logs/            <- Stores output/logs if implemented later
+└─ venv/            <- Python virtual environment
+
+
 ## 🪪 License
 
 MIT License — see [LICENSE](LICENSE) for details.
