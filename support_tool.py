@@ -1,83 +1,71 @@
-#!/usr/bin/env python3
-"""
-Support Troubleshooting Toolkit
---------------------------------
-A simple Python-based command-line tool for performing HTTP checks and DNS lookups.
-Great for Cloud Support or Technical Support practice projects.
-"""
-
 import requests
 import socket
+import subprocess
 import time
+import platform
 
-# HTTP Check Feature
 def http_check(url):
     print(f"\n== HTTP check: {url} ==")
     try:
         start = time.time()
-        r = requests.get(url, timeout=10)
+        r = requests.get(url, allow_redirects=True, timeout=5)
         elapsed = time.time() - start
-
         print(f"Status code: {r.status_code}")
         print(f"Final URL: {r.url}")
-        print(f"Elapsed time: {elapsed:.2f}s")
-
-        print("\nResponse headers:")
+        print(f"Elapsed time: {elapsed:.2f}s\n")
+        print("Response headers:")
         for k, v in r.headers.items():
             print(f"  {k}: {v}")
 
-        # Quick cache-related view
-        cache_hdrs = {
-            h: r.headers[h]
-            for h in r.headers
-            if 'cache' in h.lower() or h.lower() in ('age', 'etag', 'expires')
-        }
+        cache_hdrs = {h: r.headers[h] for h in r.headers if 'cache' in h.lower() or h.lower() in ('age','etag','expires')}
         if cache_hdrs:
             print("\nCache-related headers (quick view):")
-            for k, v in cache_hdrs.items():
+            for k,v in cache_hdrs.items():
                 print(f"  {k}: {v}")
-
     except requests.exceptions.RequestException as e:
-        print("❌ Error fetching URL:", e)
+        print("Error fetching URL:", e)
 
-# DNS Lookup Feature
-def dns_lookup(domain):
-    print(f"\n== DNS Lookup: {domain} ==")
+def dns_lookup(url):
     try:
-        hostname, aliases, ips = socket.gethostbyname_ex(domain)
-        print("Hostname:", hostname)
-        if aliases:
-            print("Aliases:", ", ".join(aliases))
-        print("IP Addresses:", ", ".join(ips))
-    except socket.gaierror:
-        print("❌ Could not resolve domain. Please check the spelling or try again.")
+        hostname = url.replace("https://", "").replace("http://", "").split("/")[0]
+        ip_address = socket.gethostbyname(hostname)
+        print(f"\n== DNS Lookup: {hostname} ==")
+        print(f"Hostname: {hostname}")
+        print(f"IP Address: {ip_address}")
+        return hostname
     except Exception as e:
-        print("DNS Lookup failed:", e)
+        print(f"\nDNS Lookup failed: {e}")
+        return None
 
-# Main function
+def ping_host(hostname):
+    print(f"\n== Ping: {hostname} ==")
+    param = "-n" if platform.system().lower()=="windows" else "-c"
+    cmd = ["ping", param, "4", hostname]
+    try:
+        subprocess.run(cmd, check=True)
+    except subprocess.CalledProcessError:
+        print("Ping failed. Host may be unreachable.")
+
+def traceroute_host(hostname):
+    print(f"\n== Traceroute: {hostname} ==")
+    cmd_name = "tracert" if platform.system().lower()=="windows" else "traceroute"
+    cmd = [cmd_name, hostname]
+    try:
+        subprocess.run(cmd, check=True)
+    except subprocess.CalledProcessError:
+        print("Traceroute failed. Host may be unreachable.")
+
 def main():
-    print("Support Troubleshooting Toolkit - HTTP & DNS Checker")
+    print("Support Troubleshooting Toolkit - HTTP, DNS, Ping & Traceroute Checker")
     url = input("Enter URL to check (e.g. https://example.com): ").strip()
-
     if not url:
         print("No URL provided. Exiting.")
         return
-
     http_check(url)
-
-    # Extract hostname and run DNS lookup
-    hostname = url.replace("https://", "").replace("http://", "").split("/")[0]
-    dns_lookup(hostname)
+    hostname = dns_lookup(url)
+    if hostname:
+        ping_host(hostname)
+        traceroute_host(hostname)
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
-
